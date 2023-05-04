@@ -1,0 +1,16 @@
+﻿{
+  "Id": "qTwxO6x2RkKEu9esWM4W5w",
+  "Reference": "_XPSnwr8Hke9aJhJdmsFdA/qTwxO6x2RkKEu9esWM4W5w",
+  "ParentRef": "_XPSnwr8Hke9aJhJdmsFdA/ozdFhVe8kEOiIKDujilAmg",
+  "Name": "Format as Table",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Created": "2023-05-04T02:48:41.0145548Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.4.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2023-05-04T02:49:05.2120777Z",
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.4.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

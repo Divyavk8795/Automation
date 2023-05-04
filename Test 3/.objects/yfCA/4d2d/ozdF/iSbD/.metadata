@@ -1,0 +1,13 @@
+﻿{
+  "Id": "iSbDwACT706ofpU3zrX9RA",
+  "Reference": "_XPSnwr8Hke9aJhJdmsFdA/iSbDwACT706ofpU3zrX9RA",
+  "ParentRef": "_XPSnwr8Hke9aJhJdmsFdA/ozdFhVe8kEOiIKDujilAmg",
+  "Name": "excel.exe MonthReport",
+  "Type": "Element",
+  "TaxonomyType": "Icon",
+  "Created": "2023-05-04T02:48:40.9858194Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.4.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2023-05-04T02:48:40.9858194Z"
+}
