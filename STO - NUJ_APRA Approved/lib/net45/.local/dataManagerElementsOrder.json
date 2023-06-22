@@ -1,0 +1,67 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemError&StateMachine_1",
+        "BusinessRuleException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "TransactionData&StateMachine_1",
+        "initError&StateMachine_1",
+        "TransactionProcessed&StateMachine_1",
+        "EmailMessages&StateMachine_1",
+        "reporting_ProcessStartTime&StateMachine_1",
+        "reporting_ProcessEndTime&StateMachine_1",
+        "varRowsAffetcted&StateMachine_1",
+        "DtStatus&StateMachine_1",
+        "tempFolder&Sequence_17",
+        "folderExists&Sequence_17",
+        "configKeys&Sequence_27",
+        "ShouldStop&Sequence_1",
+        "emailBody&Sequence_44",
+        "emailSubject&Sequence_44",
+        "emailTo&Sequence_44",
+        "screenshot&Sequence_44",
+        "attachments&Sequence_44",
+        "updateMonitoringFile&Sequence_44",
+        "htmlTable&Sequence_44",
+        "fileattach&Sequence_32",
+        "varattachfile&Sequence_53",
+        "archivefilepath&Sequence_49",
+        "varfileexist&Sequence_49",
+        "v_dev&Sequence_63",
+        "filteredTD&Sequence_34",
+        "emailTemplate&Sequence_34",
+        "fileattach&Sequence_34",
+        "varattachfile&Sequence_52",
+        "archivefilepath&Sequence_72",
+        "varfileexist&Sequence_72",
+        "v_dev&Sequence_70",
+        "archivefilepath&Sequence_80",
+        "varfileexist&Sequence_80",
+        "v_dev&Sequence_78"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "DevMode",
+        "OrchestratorQueueName"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}
