@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script src="js/aflCalc.js"></script>
+    <style>
+        label {
+            cursor: default;
+            font-weight: 500 !important;
+            padding-left: 1rem !important;
+        }
+
+        .lemon-yellow-sun {
+            background-color: lightgreen;
+            padding: 5px;
+            position: relative;
+            left: -300px;
+        }
+
+        .banner1 {
+            background-image: url('resources/AFLPLAYERS.png');
+            background-color: #cccccc;
+            height: 85px;
+            width:300px;
+            cursor:pointer;
+        }
+        .banner2 {
+            background-image: url('resources/BannerFiller.png');
+            height: 85px;
+        }
+        .banner3 {
+            background-image: url('resources/PlayerRetirementSchemeCalculation.png');
+            height: 85px;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table style="width:100%;">
+        <tr>
+            <td class="banner1" onclick="homePage()"></td>
+            <td class="banner2"></td>
+            <td class="banner3"></td>
+        </tr>
+    </table>
+
+
+
+    <div class="container-fluid" id="disclaimerSection" style="width:80%;margin:auto;">
+        <br />
+        <h5>Disclaimer</h5>
+        <p>This AFLPA Forecasting Calculator has been prepared by Equity Trustees Wealth Services Limited (ABN 33 006 132 332). Any advice contained in this Calculator is of a general nature only; and does not consider the personal needs and circumstances of any particular player. Any final benefit payment to be made to players will be determined following an independent audit where the determination will be final and binding, which may be different to the Calculator illustrations.</p>
+        <p>The Calculator results do not guarantee the stated investment performance or benefit payout value. Members should expect volatility/variability in investment returns and potential final benefit payout amounts i.e. investment returns and potential benefit payout amounts may be lower than estimated by the Calculator. Investment options with higher expected returns generally have higher variability in returns, including an increased risk of investment losses which may result in lower final benefit payouts.</p>
+        <p>Prior to acting on any information contained in this Calculator, you need to take into account your own financial circumstances, consider the product disclosure statement for any product you are considering, and seek professional advice from a licensed, or appropriately authorised, financial adviser if you are unsure of what action to take.</p>
+        <p>To the extent permitted by law, Equity Trustees Wealth Services Limited ABN 33 006 132 332 (ETWSL)  a wholly owned subsidiary of EQT Holdings Limited ABN 22 607 797 615 which is listed on the Australian Securities Exchange (ASX:EQT), their directors, officers, employees and related bodies corporate exclude any liability for any loss, damage (including any consequential loss or damage), claims and expenses (including but not limited to legal costs and defence or settlement costs) suffered or incurred by you directly or indirectly arising out of or in connection with your reliance on the information provided in the calculator or the estimates obtained using the calculator, whether in contract, tort including negligence, statute or otherwise.</p>
+        <p>This Calculator is not intended as an advertisement for any product issued by EQT Holdings Limited or any of its related entities.</p>
+
+        <div class="col-12 p-3">
+            <button type="button" class="float-end btn btn-primary me-3" onclick="homePage()" id="acceptButton">Accept</button>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="mainSection" style="display: none; width: 80%; margin: auto;">
+        <form class="row">
+            <div class="col-md-6 p-3">
+                <label for="fldName">Name*</label>
+                <input type="text" class="form-control reqrd" id="fldName" placeholder="Enter name" required>
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldYearsNotPlayed">Number of years not played</label>
+                <input class="form-control" id="fldYearsNotPlayed" type="number" placeholder="Enter number of years not played" value="0" min="0">
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldMemberNo">Member No</label>
+                <input type="text" class="form-control" id="fldMemberNo" placeholder="Enter member no" required>
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldRetirementSeason">Planned retirement season*</label>
+                <select class="form-control reqrdList" id="fldRetirementSeason" required>
+                    <option value=""> - Select - </option>
+                </select>
+
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldClubName">Club</label>
+                <input type="text" class="form-control" id="fldClubName" placeholder="Enter club name">
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldRetirementSeason">Player start date*</label>
+                <input class="form-control reqrd" id="fldPlayerStartDatePicker" type="date" placeholder="Enter player start date" required>
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldInvestmentOption">Investment option*</label>
+                <select class="form-control reqrdList" id="fldInvestmentOption" required>
+                    <option value=""> - Select - </option>
+                    <option value="Conservative">Conservative</option>
+                    <option value="Growth">Growth</option>
+                    <option value="High Growth">High Growth</option>
+                    <option value="Balanced">Balanced</option>
+                </select>
+            </div>
+            <div class="col-md-6 p-3">
+                <label for="fldLatestAccountBalance">Latest Account Balance*</label>
+                <input class="form-control reqrd" id="fldLatestAccountBalance" type="number" placeholder="Enter latest account balance" required value="0" min="0">
+            </div>
+            <div class="col-6 p-3">
+                <label for="fldMemberContribution">Additional member contributions (Including delegates and other payments)</label>
+                <input class="form-control" id="fldMemberContribution" type="number" placeholder="Enter additional member contributions" value="0" min="0">
+            </div>
+            <div class="col-12 p-3">
+                <button type="reset" class="float-end btn btn-primary" onclick="resetCalcButton()">Reset</button>
+                <button type="button" class="float-end btn btn-primary me-3" onclick="sendData()" disabled id="calcButton">Calculate</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-fluid" id="summarySection" style="display: none; width: 80%; margin: auto;">
+        <form class="row">
+
+            <div class="col-md-12 p-2">
+                <button type="button" class="btn btn-primary me-3" onclick="homePage()">Back</button>
+                <button type="button" class="btn btn-primary me-3" onclick="window.print()">Print</button>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <h5>Retirement Benefits Projection Summary</h5>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <label for="fldMemberNoReadonly">Player's Members No:</label>
+                <span class="label" id="fldMemberNoReadonly"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldRetiredYears">Years to Retirement:</label>
+                <span class="label" id="fldRetiredYears"></span>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <label for="fldPlayerName">Player Name:</label>
+                <span class="label" id="fldPlayerName"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldNumSeasonPlayed">Number of seasons played to date:</label>
+                <span class="label" id="fldNumSeasonPlayed"></span>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <label for="fldClub">Club:</label>
+                <span class="label" id="fldClub"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldTotalCareerLength">Expected Total Career Length:</label>
+                <span class="label" id="fldTotalCareerLength"></span>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <label for="fldAccountBalance">Account balance:</label>
+                <span class="label" id="fldAccountBalance"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldSelectedInvestmentOption">Selected Investment option:</label>
+                <span class="label" id="fldSelectedInvestmentOption"></span>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <label for="fldAccountBalanceDate">Account balance date:</label>
+                <span class="label" id="fldAccountBalanceDate"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldInvestmentRate">CPI + Investment rate:</label>
+                <span class="label" id="fldInvestmentRate"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldCurrentSeason">Current Season:</label>
+                <span class="label" id="fldCurrentSeason"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldEligibleTerminationPayment">Eligible Termination Payment:</label>
+                <span class="label" id="fldEligibleTerminationPayment"></span>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <label for="fldPlayerStartDate">Player start date:</label>
+                <span class="label" id="fldPlayerStartDate"></span>
+            </div>
+            <div class="col-md-6 p-2">
+                <label for="fldPeriodicPaymentPeriod">Periodic payment period:</label>
+                <span class="label" id="fldPeriodicPaymentPeriod"></span>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldPlannedRetirementDate">Planned retirement date:</label>
+                <span class="label" id="fldPlannedRetirementDate"></span>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldTaxRate">Tax rate:</label>
+                <span class="label" id="fldTaxRate"></span>
+            </div>
+
+            <div class="col-md-12 p-2" id="membershipFeeDiv">
+                <label for="fldMembershipFee">Membership Fee:</label>
+                <span class="label" id="fldMembershipFee"></span>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldIsExplayer">Ex-Player:</label>
+                <span class="label" id="fldIsExplayer"></span>
+            </div>
+        </form>
+    </div>
+
+    <br />
+
+    <div class="container-fluid" id="listSection" style="display: none; width: 80%; margin: auto;">
+
+        <form class="row">
+            <div class="col-md-12 p-3">
+                <h5>Phase 1 Contribution Period</h5>
+            </div>
+            <div class="col-md-12 p-3" id="divPhase1">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tblPhaseOne">
+                        <thead>
+                            <tr>
+                                <th>Season</th>
+                                <th>Annual Contribution Amount</th>
+                                <th>Annual Investment Return</th>
+                                <th>Closing Balance</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-6 p-3">
+                <h5>Phase 2 Eligible Termination Payment Period</h5>
+            </div>
+            <div class="col-md-4 p-3 current-phase" id="currentPhase2">
+                &nbsp;
+            </div>
+            <div class="col-md-2 p-3">
+                &nbsp;
+            </div>
+
+            <div class="col-md-12 p-3" id="divPhase2">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tblPhaseTwo">
+                        <thead>
+                            <tr>
+                                <th>Season</th>
+                                <th>Opening Member Balance</th>
+                                <th>Investment Return On Member Balance</th>
+                                <th>Total Member Balance After Investment Return</th>
+                                <th>Eligible Termination Payment Gross</th>
+                                <th>Eligible Termination Payment After Fees Tax</th>
+                                <th>Closing Balance</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 p-3">
+                <h5>Phase 3 Periodic Payments Waiting Period</h5>
+            </div>
+            <div class="col-md-4 p-3 current-phase" id="currentPhase3">
+                &nbsp;
+            </div>
+            <div class="col-md-2 p-3">
+                &nbsp;
+            </div>
+
+            <div class="col-md-12 p-3" id="divPhase3">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tblPhaseThree">
+                        <thead>
+                            <tr>
+                                <th>Season</th>
+                                <th>Investment Return</th>
+                                <th>Closing Balance</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 p-3">
+                <h5>Phase 4 Periodic Payments Period</h5>
+            </div>
+            <div class="col-md-4 p-3 current-phase" id="currentPhase4">
+                &nbsp;
+            </div>
+            <div class="col-md-2 p-3">
+                &nbsp;
+            </div>
+
+            <div class="col-md-12 p-3" id="divPhase4">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tblPhaseFour">
+                        <thead>
+                            <tr>
+                                <th>Season</th>
+                                <th>Payout Ratio</th>
+                                <th>Opening Balance</th>
+                                <th>Investment Return</th>
+                                <th>Periodic Payment Gross</th>
+                                <th>Periodic Payment Taxable Amount</th>
+                                <th>Periodic Payment After Tax</th>
+                                <th>Closing Balance</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </form>
+
+        <form class="row" id="summaryDiv">
+            <div class="col-md-12 p-3">
+                <h5>Summary</h5>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldBalanceAtRetirement">Balance at Retirement Date ($):</label>
+                <span class="label" id="fldBalanceAtRetirement"></span>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldLumpsumPayoutGross">Eligible Termination Payment Gross ($):</label>
+                <span class="label" id="fldLumpsumPayoutGross"></span>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldSumPeriodicPaymentGross">Total Periodic Payments Received Gross ($):</label>
+                <span class="label" id="fldSumPeriodicPaymentGross"></span>
+            </div>
+
+            <div class="col-md-12 p-2">
+                <label for="fldTotalInvestmentReturn">Total Investment Return ($):</label>
+                <span class="label" id="fldTotalInvestmentReturn"></span>
+            </div>
+
+        </form>
+    </div>
+
+    <br />
+    <br />
+
+    <script>
+        $(document).ready(function () {
+            PopulateRetirementYears();
+            $(".reqrd").keyup();
+            $(".reqrdList").change();
+        });
+
+        $('.reqrd').keyup(function () {
+            if (HasEmptyValue()) {
+                $('#calcButton').prop('disabled', true);
+            } else {
+                $('#calcButton').removeAttr('disabled');
+            }
+        });
+
+        $('.reqrdList').change(function () {
+            if (HasEmptyValue()) {
+                $('#calcButton').prop('disabled', true);
+            } else {
+                $('#calcButton').removeAttr('disabled');
+            }
+        });
+
+        function HasEmptyValue() {
+
+            var isEmpty = false;
+
+            $('.reqrd').each(function () {
+                if ($(this).val() == '') {
+                    isEmpty = true;
+                }
+            });
+
+            $('.reqrdList').each(function () {
+                if ($(this).val() == '') {
+                    isEmpty = true;
+                }
+            });
+
+            return isEmpty;
+        }
+
+        function PopulateRetirementYears() {
+            //Dynamically populate Retirement Season
+            var ddlYears = document.getElementById("fldRetirementSeason");
+            var minYear = (new Date()).getFullYear() - 25;
+            var maxYear = (new Date()).getFullYear() + 25;
+
+            //Loop and add the Year values to DropDownList.
+            for (var i = minYear; i <= maxYear; i++) {
+                var option = document.createElement("OPTION");
+                option.innerHTML = i;
+                option.value = i;
+                ddlYears.appendChild(option);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
