@@ -1,0 +1,3 @@
+﻿FileNumber,FileName,SheetName,ID,Status,Message
+1,SRF606_0_AON_QD_20220630_77,EntityDetails,0,SystemException,Login failed for user 'EQTCORP\divyav'.
+1,SRF606_0_AON_QD_20220630_77,SRF_606_0_Table_4,0,BusinessRuleException,Table not uploaded as corresponding EntityDetails table data not uploaded
